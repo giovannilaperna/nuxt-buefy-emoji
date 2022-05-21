@@ -1,5 +1,16 @@
 <template>
   <section key="emojis-box" class="box">
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+        </div>
+      </div>
+      <div class="level-right">
+        <p class="level-item">
+          <button @click="emitCloseModal" class="delete is-large"></button>
+        </p>
+      </div>
+    </nav>
     <div v-for="(category, index) in emojiData" :key="index" class="section">
       <div class="title is-6">{{ category.group }}</div>
       <div class="columns is-multiline">
@@ -18,6 +29,9 @@ export default {
     emojiData,
   }),
   methods: {
+    emitCloseModal() {
+      this.$emit('closeModal')
+    },
     emitAddEmoji(emoji) {
       this.$emit("addEmoji", emoji)
     }

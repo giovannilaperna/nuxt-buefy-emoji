@@ -8,8 +8,8 @@
         </span>
       </div>
     </div>
-    <b-modal v-model="isModalActive" :width="640" scroll="keep">
-      <emoji-picker @addEmoji="addEmoji" />
+    <b-modal v-model="isModalActive" :can-cancel="['escape']" :full-screen="true" scroll="keep">
+      <emoji-picker @addEmoji="addEmoji" @closeModal="closeModal" />
     </b-modal>
   </section>
 </template>
@@ -23,6 +23,9 @@
       cursorEnd: 0 
     }),
     methods: {
+      closeModal () {
+        this.isModalActive = false
+      },
       activateModal () {
         this.isModalActive = true
         this.cursorStart = this.$refs.ta.selectionStart
