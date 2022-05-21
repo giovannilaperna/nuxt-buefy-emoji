@@ -1,9 +1,9 @@
 <template>
-  <section class="box">
-    <div v-for="category in emojiData" :key="category.group" class="section">
+  <section key="emojis-box" class="box">
+    <div v-for="(category, index) in emojiData" :key="index" class="section">
       <div class="title is-6">{{ category.group }}</div>
       <div class="columns is-multiline">
-        <div v-for="emoji in category.emojis" :key="emoji.slug" class="column is-mobile is-narrow" @click="emitAddEmoji(emoji.emoji)">
+        <div v-for="(emoji, i) in category.emojis" :key="index+i" class="column is-mobile is-narrow" @click="emitAddEmoji(emoji.emoji)">
           {{ emoji.emoji }}
         </div>
       </div>
